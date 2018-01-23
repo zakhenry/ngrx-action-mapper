@@ -7,8 +7,8 @@ node_js:
    - node # will use latest node
 
 script: # the build step
-   - npm build
-   - npm test
+   - npm run build
+   - npm run test.ci
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!)
