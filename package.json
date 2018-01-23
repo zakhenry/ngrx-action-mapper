@@ -13,6 +13,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
+    "test.ci": "npm run test -- --browsers chrome_headless --single-run true --code-coverage true",
     "lint": "ng lint"
   },
   "private": true,
