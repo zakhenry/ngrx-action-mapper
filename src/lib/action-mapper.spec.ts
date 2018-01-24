@@ -100,4 +100,35 @@ describe('ActionMapper', () => {
     expect(update).toEqual(expectedUpdate);
   });
 
+  it('can map multiple functions (in order) to the same action', () => {
+
+    const action = { type: 'do-maths' };
+    const initialState = { foo: 1 };
+    const expectedUpdate = { foo: -2 };
+
+    function incrementFunction(state) {
+      return {
+        ...state,
+        ...{ foo: state.foo + 1 },
+      };
+    }
+
+    function negateFunction(state) {
+      return {
+        ...state,
+        ...{ foo: state.foo *= -1 },
+      };
+    }
+
+    const reducer = new ActionMapper()
+      .add(action.type, incrementFunction)
+      .add(action.type, negateFunction)
+      .buildReducer();
+
+    const update = reducer(initialState, action);
+
+    expect(update).toEqual(expectedUpdate);
+
+  });
+
 });

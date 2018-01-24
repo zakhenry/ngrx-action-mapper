@@ -49,6 +49,8 @@ globSync("**/*.expect-failure.ts")
         console.error(`Got TS Error:     `, stdout);
       }
 
+      console.log(`Verified ${file} has expected compilation error`)
+
       return;
     }
 

@@ -10,9 +10,7 @@ export interface StaticPayloadAction<P, A extends PayloadAction<P>> {
   prototype: {payload?: P};
 }
 
-export interface PayloadActionReducer<S, P, A extends PayloadAction<P>> {
-  (state: S | undefined, payload: P): S;
-}
+export type PayloadActionReducer<S, P, A extends PayloadAction<P>> = (state: S | undefined, payload: P) => S;
 
 export class ActionMapper<S, A extends PayloadAction = PayloadAction> {
 
@@ -39,7 +37,7 @@ export class ActionMapper<S, A extends PayloadAction = PayloadAction> {
         return state;
       }
 
-      let reducerFunctions: PayloadActionReducer<S, A['payload'], A>[] = [];
+      const reducerFunctions: PayloadActionReducer<S, A['payload'], A>[] = [];
       if (this.actionSet.has(action.constructor as StaticPayloadAction<A['payload'], A>)) {
         reducerFunctions.push(...this.actionSet.get(action.constructor as StaticPayloadAction<A['payload'], A>));
       }
@@ -47,8 +45,8 @@ export class ActionMapper<S, A extends PayloadAction = PayloadAction> {
         reducerFunctions.push(...this.actionSet.get(action.type));
       }
 
-      return reducerFunctions.reduce<S>((state: S, reducerFunction: PayloadActionReducer<S, A['payload'], A>): S => {
-        return reducerFunction(state, action.payload);
+      return reducerFunctions.reduce<S>((prevState: S, reducerFunction: PayloadActionReducer<S, A['payload'], A>): S => {
+        return reducerFunction(prevState, action.payload);
       }, state);
     };
   }
