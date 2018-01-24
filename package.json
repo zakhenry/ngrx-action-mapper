@@ -23,6 +23,8 @@
     "@ngrx/store": "^5.0.0"
   },
   "devDependencies": {
+    "@ngrx/entity": "^5.0.0",
+    "@ngrx/store": "^5.0.0",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
