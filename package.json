@@ -17,9 +17,9 @@
     "test.ci": "npm run test -- --browsers chrome_headless --single-run true --code-coverage true && npm run test.type-failures",
     "lint": "ng lint",
     "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "package": "ng-packagr -p package.json"
   },
-  "private": true,
   "peerDependencies": {
     "@ngrx/entity": "^5.0.0",
     "@ngrx/store": "^5.0.0"

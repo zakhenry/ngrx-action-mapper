@@ -19,6 +19,7 @@ script: # the build step
    - npm run build
    - npm run lint
    - npm run test.ci
+   - npm run package
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!)
@@ -30,7 +31,7 @@ cache:
     - ~/.npm
 
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - cd dist && npm run travis-deploy-once "npm run semantic-release"
 
 branches:
   except:
