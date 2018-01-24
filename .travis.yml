@@ -24,3 +24,14 @@ notifications:
   email: # only receive email when the build status changes (someone broke the build!)
     on_failure: change
     on_success: change
+
+cache:
+  directories:
+    - ~/.npm
+
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
