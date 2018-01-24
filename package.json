@@ -14,7 +14,7 @@
     "build": "ng build --prod",
     "test.type-failures": "node ./src/assert-type-failures.js",
     "test": "ng test",
-    "test.ci": "npm run test -- --browsers chrome_headless --single-run true --code-coverage true && test.type-failures",
+    "test.ci": "npm run test -- --browsers chrome_headless --single-run true --code-coverage true && npm run test.type-failures",
     "lint": "ng lint"
   },
   "private": true,
