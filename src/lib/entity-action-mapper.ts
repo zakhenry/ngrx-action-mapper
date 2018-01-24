@@ -1,8 +1,8 @@
 import { EntityAdapter } from '@ngrx/entity';
 import { ActionMapper, PayloadAction, StaticPayloadAction } from './action-mapper';
 
-type PayloadActionFunction<S, P> = (p: P, s: S) => S;
-type PayloadlessActionFunction<S> = (s: S) => S;
+export type PayloadActionFunction<S, P> = (p: P, s: S) => S;
+export type PayloadlessActionFunction<S> = (s: S) => S;
 export type EntityFunction<S, P> = PayloadActionFunction<S, P> | PayloadlessActionFunction<S>;
 
 export class EntityActionMapper<Entity, State, Action extends PayloadAction = PayloadAction> extends ActionMapper<State, Action> {
