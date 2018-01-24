@@ -31,7 +31,7 @@ cache:
     - ~/.npm
 
 after_success:
-  - cd dist && npm run travis-deploy-once "npm run semantic-release"
+  - cd dist && npm install && npm run travis-deploy-once "npm run semantic-release"
 
 branches:
   except:
