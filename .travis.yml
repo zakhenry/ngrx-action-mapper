@@ -18,8 +18,7 @@ script:
   - yarn run lib:test:types
   # build
   - yarn run lib:build:prod
-  - rm dist/ngrx-action-mapper/README.md && cp README.md dist/ngrx-action-mapper
-  - cp LICENSE dist/ngrx-action-mapper
+  - cp README.md LICENSE dist/ngrx-action-mapper
 
 deploy:
   - provider: script
