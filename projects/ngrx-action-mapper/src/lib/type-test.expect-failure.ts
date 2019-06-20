@@ -4,8 +4,7 @@ import { ActionMapper } from './action-mapper';
 class ChangeFooAction implements Action {
   type: 'ChangeFooAction';
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 interface FooState {
@@ -18,6 +17,7 @@ function reducerFunction(state: FooState, foo: number): FooState {
 
 const mapper = new ActionMapper();
 
+// tslint:disable:max-line-length
 /**
  * Expect:
  * TS2345: Argument of type '(state: FooState, foo: number) => FooState' is not assignable to parameter of type 'PayloadActionReducer<{}, string, PayloadAction<any>>'.

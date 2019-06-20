@@ -10,12 +10,10 @@ interface Person {
 class CreatePersonAction implements Action {
   type: 'CreatePersonAction';
 
-  constructor(public payload: Person) {
-  }
+  constructor(public payload: Person) {}
 }
 
-interface PersonState extends EntityState<Person> {
-}
+interface PersonState extends EntityState<Person> {}
 
 const peopleAdapter: EntityAdapter<Person> = createEntityAdapter<Person>();
 
@@ -23,6 +21,7 @@ const initialPeopleState: PersonState = peopleAdapter.getInitialState();
 
 const mapper = new EntityActionMapper(initialPeopleState, peopleAdapter);
 
+// tslint:disable:max-line-length
 /**
  * Expect:
  * TS2345: Argument of type '(a: EntityAdapter<Person>) => <S extends EntityState<Person>>(update: Update<Person>, state: S) =...' is not assignable to parameter of type '(adapter: EntityAdapter<Person>) => EntityFunction<PersonState, Person>'.

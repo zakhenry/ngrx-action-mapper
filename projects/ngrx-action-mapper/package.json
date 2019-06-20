@@ -1,0 +1,20 @@
+{
+  "name": "ngrx-action-mapper",
+  "version": "0.0.1",
+  "license": "MIT",
+  "peerDependencies": {
+    "@ngrx/entity": "^8.0.0",
+    "@ngrx/store": "^8.0.0"
+  },
+  "keywords": [
+    "ngrx",
+    "angular",
+    "reducer",
+    "actions",
+    "redux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zakhenry/ngrx-action-mapper.git"
+  }
+}
