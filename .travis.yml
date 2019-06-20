@@ -1,38 +1,29 @@
-dist: trusty
-sudo: required
-node_js:
-   - node # will use latest node
-os:
-  - linux
-env:
-  global:
-    - DBUS_SESSION_BUS_ADDRESS=/dev/null
-    - DISPLAY=:99.0
-    - CHROME_BIN=chromium-browser
+sudo: false
 
-before_script:
-  - sh -e /etc/init.d/xvfb start
+dist: trusty
+language: node_js
+node_js:
+  - '12'
+
+cache: yarn
 
 install:
-  - npm install
-script: # the build step
-   - npm run build
-   - npm run lint
-   - npm run test.ci
-   - npm run package
+  - yarn --frozen-lockfile --non-interactive --no-progress
 
-notifications:
-  email: # only receive email when the build status changes (someone broke the build!)
-    on_failure: change
-    on_success: change
+script:
+  # lint
+  - yarn run demo:lint:check
+  - yarn run prettier:check
+  # tests
+  - yarn run lib:test:ci
+  - yarn run lib:test:types
+  # build
+  - yarn run lib:build:prod
+  - cp README.md LICENSE dist/ngrx-action-mapper
 
-cache:
-  directories:
-    - ~/.npm
-
-after_success:
-  - cd dist && npm install && npm run travis-deploy-once "npm run semantic-release"
-
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: yarn semantic-release
+    on:
+      branch: master

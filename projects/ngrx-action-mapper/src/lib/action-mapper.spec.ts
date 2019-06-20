@@ -2,9 +2,7 @@ import { Action } from '@ngrx/store';
 import { ActionMapper } from './action-mapper';
 
 describe('ActionMapper', () => {
-
   it('should be able to register an action against a payload reducer function, and return the mapper', () => {
-
     const mapper = new ActionMapper();
 
     const action = { type: 'dummy-action' };
@@ -14,7 +12,6 @@ describe('ActionMapper', () => {
   });
 
   it('should create a reducer that passes the state through when null action is passed', () => {
-
     const reducer = new ActionMapper().buildReducer();
 
     const state = { foo: 'bar' };
@@ -25,7 +22,6 @@ describe('ActionMapper', () => {
   });
 
   it('should be able to register a reducer function which updates the state when an object action is received', () => {
-
     const action = { type: 'dummy-action' };
     const initialState = { foo: 'bar' };
     const expectedUpdate = { foo: 'baz' };
@@ -34,9 +30,7 @@ describe('ActionMapper', () => {
       return expectedUpdate;
     }
 
-    const reducer = new ActionMapper()
-      .add(action.type, reducerFunction)
-      .buildReducer();
+    const reducer = new ActionMapper().add(action.type, reducerFunction).buildReducer();
 
     const update = reducer(initialState, action);
 
@@ -44,12 +38,10 @@ describe('ActionMapper', () => {
   });
 
   it('should be able to register a reducer function which updates the state when a class action is received', () => {
-
     class ClassAction implements Action {
       type: 'ClassAction';
 
-      constructor(public payload?: never) {
-      }
+      constructor(public payload?: never) {}
     }
 
     const action = new ClassAction();
@@ -60,9 +52,7 @@ describe('ActionMapper', () => {
       return expectedUpdate;
     }
 
-    const reducer = new ActionMapper()
-      .add(ClassAction, reducerFunction)
-      .buildReducer();
+    const reducer = new ActionMapper().add(ClassAction, reducerFunction).buildReducer();
 
     const update = reducer(initialState, action);
 
@@ -70,12 +60,10 @@ describe('ActionMapper', () => {
   });
 
   it('should partially update the state when a sub-state action reducer is applied', () => {
-
     class ChangeFooAction implements Action {
       type: 'ChangeFooAction';
 
-      constructor(public payload: string) {
-      }
+      constructor(public payload: string) {}
     }
 
     interface FooState {
@@ -90,9 +78,7 @@ describe('ActionMapper', () => {
       return { ...state, ...{ foo } };
     }
 
-    const reducer = new ActionMapper()
-      .add(ChangeFooAction, reducerFunction)
-      .buildReducer();
+    const reducer = new ActionMapper().add(ChangeFooAction, reducerFunction).buildReducer();
 
     const update = reducer(initialState, action);
 
@@ -101,7 +87,6 @@ describe('ActionMapper', () => {
   });
 
   it('can map multiple functions (in order) to the same action', () => {
-
     const action = { type: 'do-maths' };
     const initialState = { foo: 1 };
     const expectedUpdate = { foo: -2 };
@@ -128,7 +113,5 @@ describe('ActionMapper', () => {
     const update = reducer(initialState, action);
 
     expect(update).toEqual(expectedUpdate);
-
   });
-
 });

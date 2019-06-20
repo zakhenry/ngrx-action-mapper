@@ -1,27 +1,3 @@
-# Ngrx Action Mapper
-
-Simple utility for building Ngrx reducer with less boilerplate
-
-[![npm version](https://badge.fury.io/js/ngrx-action-mapper.svg)](https://www.npmjs.com/package/ngrx-action-mapper)
-[![Build Status](https://travis-ci.org/cloudnc/ngrx-action-mapper.svg?branch=master)](https://travis-ci.org/cloudnc/ngrx-action-mapper)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
-
-## Install
-
-Install the [npm package](https://www.npmjs.com/package/ngrx-action-mapper): `ngrx-action-mapper`
-
-```sh
-# with npm
-npm install ngrx-action-mapper
-# or with yarn
-yarn add ngrx-action-mapper
-```
-
-## Usage
-
-```ts
-// src/app/store/users.reducer.ts
-
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action } from '@ngrx/store';
 import { EntityActionMapper } from 'ngrx-action-mapper';
@@ -70,4 +46,3 @@ export const actionReducer = new EntityActionMapper(initialUsersState, usersAdap
 export function usersReducer(state: UsersState, action: Action): UsersState {
   return actionReducer(state, action);
 }
-```
