@@ -3,7 +3,7 @@
 Simple utility for building Ngrx reducer with less boilerplate
 
 [![npm version](https://badge.fury.io/js/ngrx-action-mapper.svg)](https://www.npmjs.com/package/ngrx-action-mapper)
-[![Build Status](https://travis-ci.org/cloudnc/ngrx-action-mapper.svg?branch=master)](https://travis-ci.org/cloudnc/ngrx-action-mapper)
+[![Build Status](https://travis-ci.org/zakhenry/ngrx-action-mapper.svg?branch=master)](https://travis-ci.org/zakhenry/ngrx-action-mapper)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
 
 ## Install
